@@ -27,7 +27,7 @@ npm start
 ```
 
 of gebruik de WebStorm knop (npm start). Open [http://localhost:3000](http://localhost:3000/) om de pagina in de browser
-te bekijken. Begin met het maken van wijzigingen in `src/App.js`: elke keer als je een bestand opslaat, zullen de
+te bekijken. Begin met het maken van wijzigingen in `src/App.jsx`: elke keer als je een bestand opslaat, zullen de
 wijzigingen te zien zijn op de webpagina.
 
 ## Randvoorwaarden
@@ -41,7 +41,7 @@ De applicatie heeft op dit moment al vier pagina's met werkende routing:
 
 Je gaat de volgende concepten implementeren:
 
-* Je implementeert React Context doormiddel van een custom Provider component (`AuthContext.js`);
+* Je implementeert React Context doormiddel van een custom Provider component (`AuthContext.jsx`);
 * Je hebt nog geen echte invoervelden nodig voor het inloggen. Het in- en uitlog-proces is niets meer dan een simpele
   state-toggle die wordt beheerd in de context:
 
@@ -67,12 +67,12 @@ const [isAuth, toggleIsAuth] = useState(false);
 
 Als je niet zo goed weet waar je moet beginnen, kun je onderstaand stappenplan volgen:
 
-1. Maak een context-bestand (`AuthContext.js`) met daarin (je raadt het niet!) een `AuthContext`.
+1. Maak een context-bestand (`AuthContext.jsx`) met daarin (je raadt het niet!) een `AuthContext`.
 2. Creer dan het custom Provider-component. Uit dit component return je het echte `AuthContext.Provider` component.
 3. Zorg ervoor dat we het custom Provider-component zometeen om de applicatie kunnen wikkelen door de children property
    te implementeren.
 4. Maak een data-object aan die je meegeeft aan de `value`-property en zet daar wat test-data in.
-5. Wrap dit om het `<App />`-component in `index.js`
+5. Wrap dit om het `<App />`-component in `main.jsx`
 6. Lees de context uit in één van de pagina-componenten om te kijken of jouw eerste opzet functioneel is (
    met `useContext`)
 7. Gelukt? Top. Dan is het tijd om state aan te maken in het custom Provider-component. Noem deze
@@ -82,11 +82,11 @@ Als je niet zo goed weet waar je moet beginnen, kun je onderstaand stappenplan v
    voor dat je op basis van deze status een inloggen- en registreren-knop laat zien, **of** alleen een uitlog-knop.
 9. Schrijf een inlog-functie in het custom Provider-component en maak deze beschikbaar in het data-object. In de
    randvoorwaarden staat beschreven wat deze functie moet doen.
-10. Maak de knop in het formulier in `SignIn.js` functioneel. Als het formulier wordt _gesubmit_, roep je de
+10. Maak de knop in het formulier in `SignIn.jsx` functioneel. Als het formulier wordt _gesubmit_, roep je de
     login-functie uit de context aan!
 11. Schrijf een uitlog-functie in het custom Provider-component en maak deze beschikbaar in het data-object. In de
     randvoorwaarden staat beschreven wat deze functie moet doen.
-12. Maak de knop in de navigatie (`NavBar.js`) functioneel. Als erop wordt geklikt, roep je de logout-functie uit de
+12. Maak de knop in de navigatie (`NavBar.jsx`) functioneel. Als erop wordt geklikt, roep je de logout-functie uit de
     context aan!
 13. Ten slotte kun je de route naar `/profile` beveiligen met een private route.
 
@@ -99,6 +99,6 @@ Als je niet zo goed weet waar je moet beginnen, kun je onderstaand stappenplan v
 * Breidt de state uit van een boolean naar een object. De initiele waarde moet er zo uitzien: `{isAuth: false, user: ''}`
 * Nu de state een object is, werkt het togglen van `isAuth` natuurlijk ook anders in de login- en logout-functie. Pas dit aan zodat het weer werkt!
 * Zorg ervoor dat de inhoud van de state (dus de keys `isAuth` en `user`) worden doorgegeven in het data-object.
-* Zorg er dan nu voor dat de _gebruikersnaam_ wordt meegegeven bij het aanroepen van de login functie vanuit `SignIn.js`
+* Zorg er dan nu voor dat de _gebruikersnaam_ wordt meegegeven bij het aanroepen van de login functie vanuit `SignIn.jsx`
 * Zorg ervoor dat er in het custom Provider-component voor gezorgd wordt dat die gebruikersnaam wordt opgeslagen onder `user` in de state.
 * Laat, als er een gebruiker is ingelogd, de gebruikersnaam zien in de navigatie.

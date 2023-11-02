@@ -23,7 +23,7 @@ npm install
 Wanneer dit klaar is, kun je de applicatie starten met behulp van:
 
 ```
-npm start
+npm run dev
 ```
 
 of gebruik de WebStorm knop (npm start). Open [http://localhost:3000](http://localhost:3000/) om de pagina in de browser

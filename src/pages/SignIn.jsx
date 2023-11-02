@@ -1,22 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { useForm } from 'react-hook-form';
 
 function SignIn() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
     const { login } = useContext(AuthContext);
+    const { handleSubmit, register } = useForm();
 
-    function handleSubmit(e) {
-        e.preventDefault();
-
-        console.log({
-            emailadres: email,
-            wachtwoord: password,
-        });
-
-        login(email);
+    function onSubmit(data) {
+        console.log(data);
+        login();
     }
 
     return (
@@ -24,15 +17,13 @@ function SignIn() {
             <h1>Inloggen</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="email-field">
                     Emailadres:
                     <input
                         type="email"
                         id="email-field"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        {...register("email")}
                     />
                 </label>
 
@@ -41,12 +32,9 @@ function SignIn() {
                     <input
                         type="password"
                         id="password-field"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        {...register("password")}
                     />
                 </label>
-
                 <button
                     type="submit"
                     className="form-button"

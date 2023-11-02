@@ -4,7 +4,7 @@ import {useNavigate, Link} from 'react-router-dom';
 import {AuthContext} from '../context/AuthContext';
 
 function NavBar() {
-    const {isAuth, logout} = useContext(AuthContext);
+    const {isAuth, logout, user} = useContext(AuthContext);
     const navigate = useNavigate();
 
     return (
@@ -19,30 +19,33 @@ function NavBar() {
             </Link>
 
             {isAuth ?
+                <div className="user">
+                    <h5>{user}</h5>
                     <button
                         type="button"
                         onClick={logout}
                     >
                         Log uit
                     </button>
-                    :
-                    <div>
-                        <button
-                            type="button"
-                            onClick={() => navigate('/signin')}
-                        >
-                            Log in
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => navigate('/signup')}
-                        >
-                            Registreren
-                        </button>
-                    </div>
-                    }
-                </nav>
-                );
+                </div>
+                :
+                <div>
+                    <button
+                        type="button"
+                        onClick={() => navigate('/signin')}
+                    >
+                        Log in
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => navigate('/signup')}
+                    >
+                        Registreren
+                    </button>
+                </div>
             }
+        </nav>
+    );
+}
 
-            export default NavBar;
+export default NavBar;
